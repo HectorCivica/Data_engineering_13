@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_SQL_SERVER_DBO__ADDRESSES
-    
+
     columns:
       - name: ADDRESS_ID
       - name: ZIPCODE
