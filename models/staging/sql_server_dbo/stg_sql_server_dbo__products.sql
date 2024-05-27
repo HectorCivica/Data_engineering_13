@@ -2,16 +2,17 @@ with
 
 source as (
 
-    select * from {{ source('SQL_SERVER_DBO', 'ORDER_ITEMS') }}
+    select * from {{ source('sql_server_dbo', 'products') }}
 
 ),
 
 renamed as (
 
     select
-        order_id,
         product_id,
-        quantity,
+        price,
+        name,
+        inventory,
         _fivetran_deleted,
         _fivetran_synced
 
