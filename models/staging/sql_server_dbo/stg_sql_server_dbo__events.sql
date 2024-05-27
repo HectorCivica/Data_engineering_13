@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select * from {{ source('SQL_SERVER_DBO', 'EVENTS') }}
+    select * from {{ source('sql_server_dbo', 'events') }}
 
 ),
 

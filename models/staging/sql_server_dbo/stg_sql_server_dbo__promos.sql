@@ -2,17 +2,16 @@ with
 
 source as (
 
-    select * from {{ source('SQL_SERVER_DBO', 'PRODUCTS') }}
+    select * from {{ source('sql_server_dbo', 'promos') }}
 
 ),
 
 renamed as (
 
     select
-        product_id,
-        price,
-        name,
-        inventory,
+        promo_id,
+        discount,
+        status,
         _fivetran_deleted,
         _fivetran_synced
 
