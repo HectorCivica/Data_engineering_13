@@ -10,11 +10,25 @@ renamed as (
 
     select
         order_id,
-        shipping_service,
+        case when shipping_service=''
+            then md5('No shipping')
+            else md5(shipping_service)
+            end as shipping_id,
+        case when shipping_service=''
+            then 'No shipping'
+            else shipping_service
+            end as shipping_desc,
         shipping_cost,
         address_id,
         created_at,
-        promo_id,
+            case when promo_id=''
+            then md5('No promo')
+            else md5(promo_id)
+            end as promo_id,
+        case when promo_id=''
+            then 'No promo'
+            else promo_id
+            end as promo_name,
         estimated_delivery_at,
         order_cost,
         user_id,

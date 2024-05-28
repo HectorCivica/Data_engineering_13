@@ -210,3 +210,23 @@ sources:
           - name: _fivetran_synced
             data_type: timestamp_tz
             description: ""
+
+      - name: dimension_status
+        description: ""
+        columns:
+          - name: status
+            data_type: varchar
+            description: ""
+          - name: status_bool
+            data_type: number
+            description: ""
+        
+      - name: dimension_shipping
+        description: ""
+        columns:
+          - name: shipping_id
+            data_type: varchar
+            description: ""
+          - name: shipping_desc
+            data_type: varchar
+            description: ""
