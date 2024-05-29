@@ -15,7 +15,7 @@ dimension_shipping as (
             then 'No shipping'
             else shipping_service
             end as shipping_desc
-    from stg_sql_server_dbo__orders
+    from source
 
 )
 

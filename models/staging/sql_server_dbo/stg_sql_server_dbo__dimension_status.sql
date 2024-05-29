@@ -12,7 +12,7 @@ dimension_status as (
         when status='inactive' then '0'
         end as id_status,
 
-    from stg_sql_server_dbo__promos
+    from source
 
 )
 

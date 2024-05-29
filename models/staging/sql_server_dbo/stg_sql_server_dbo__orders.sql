@@ -42,5 +42,31 @@ renamed as (
     from source
 
 )
+--select * from renamed
 
-select * from renamed
+,
+added_row AS (
+    SELECT 
+        md5('empty_order') as order_id,
+        md5('No shipping') as shipping_id,
+        'No shipping' as shipping_desc,
+        0 as shipping_cost,
+        null as address_id,
+        null as created_at,
+        null as promo_id,
+        null as promo_name,
+        null as estimated_delivery_at,
+        null as order_cost,
+        null as user_id,
+        null as order_total,
+        null as delivered_at,
+        null as tracking_id,
+        null as status,
+        null as _fivetran_deleted,
+        null as _fivetran_synced
+
+)
+
+SELECT * FROM renamed
+UNION ALL
+SELECT * FROM added_row
