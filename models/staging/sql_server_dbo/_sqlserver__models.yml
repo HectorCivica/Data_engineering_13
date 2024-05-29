@@ -7,10 +7,15 @@ models:
       - name: address_id
         data_type: varchar
         description: ""
+        tests:
+          - unique
 
       - name: zipcode
         data_type: number
         description: ""
+        tests:
+         - not_null
+          
 
       - name: country
         data_type: varchar
@@ -31,6 +36,9 @@ models:
       - name: _fivetran_synced
         data_type: timestamp_tz
         description: ""
+        tests:
+          - not_null
+          
 
   - name: stg_sql_server_dbo__events
     description: ""
@@ -38,6 +46,9 @@ models:
       - name: event_id
         data_type: varchar
         description: ""
+        tests:
+          - unique
+          - not_null
 
       - name: page_url
         data_type: varchar
@@ -50,10 +61,20 @@ models:
       - name: user_id
         data_type: varchar
         description: ""
+        tests:
+          - not_null
+          - relationships:
+              to: ref('')
+              field: user_id
 
       - name: product_id
         data_type: varchar
         description: ""
+        tests:
+          - relationships:
+              to: ref('stg_sql_server_dbo__products')
+              field: product_id
+              
 
       - name: session_id
         data_type: varchar
@@ -66,6 +87,11 @@ models:
       - name: order_id
         data_type: varchar
         description: ""
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_sql_server_dbo__orders')
+              field: order_id
 
       - name: _fivetran_deleted
         data_type: boolean
@@ -85,6 +111,10 @@ models:
       - name: product_id
         data_type: varchar
         description: ""
+        tests:
+          - relationships:
+              to: ref('stg_sql_server_dbo__products')
+              field: product_id
 
       - name: quantity
         data_type: number
@@ -104,6 +134,9 @@ models:
       - name: order_id
         data_type: varchar
         description: ""
+        tests:
+          - unique
+
 
       - name: shipping_service
         data_type: varchar
@@ -112,6 +145,8 @@ models:
       - name: shipping_cost
         data_type: float
         description: ""
+        tests:
+         - positive_values
 
       - name: address_id
         data_type: varchar

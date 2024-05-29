@@ -1,4 +1,11 @@
---insert into ALUMNO13DEVBRONZEDB.SQL_SERVER_DBO.PROMOS (md5(''),'', 0, 'inactive', null, CURRENT_TIMESTAMP)
+{{
+  config(
+    materialized='view'
+  )
+}}
+
+
+
 with 
 
 source as (
