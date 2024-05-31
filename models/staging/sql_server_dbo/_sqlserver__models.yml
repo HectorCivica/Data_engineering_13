@@ -292,3 +292,5 @@ models:
       - name: _fivetran_synced
         data_type: timestamp_tz
         description: ""
+
+
