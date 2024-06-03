@@ -1,3 +1,10 @@
+{{
+  config(
+    materialized = "table",
+
+  )
+}}
+
 -- models/dim_time.sql
 with recursive dates as (
     select 
