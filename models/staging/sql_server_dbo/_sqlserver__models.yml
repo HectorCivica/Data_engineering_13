@@ -13,17 +13,19 @@ models:
         description: ""
         tests:
           - unique
+          - not_null
+          
 
       - name: zipcode
         data_type: number
-        description: ""
+        description: "Código postal"
         tests:
          - not_null
           
 
       - name: country
         data_type: varchar
-        description: ""
+        description: "Mayoria EEUU"
 
       - name: address
         data_type: varchar
@@ -111,6 +113,10 @@ models:
       - name: order_id
         data_type: varchar
         description: ""
+        tests:
+          - not_null
+          
+          
 
       - name: product_id
         data_type: varchar
@@ -140,6 +146,9 @@ models:
         description: ""
         tests:
           - unique
+          - relationships:
+              to: ref('stg_sql_server_dbo__orders')
+              field: order_id
 
 
       - name: shipping_service
