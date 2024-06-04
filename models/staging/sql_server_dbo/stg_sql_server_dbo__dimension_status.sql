@@ -1,8 +1,14 @@
+{{
+  config(
+    materialized = "table",
+  )
+}}
+
 with 
 -- Hay que coger source, porque en la silver de orders hemos cambiado la columna por el ID generado y no existe
 source as (
 
-select status from {{ source('sql_server_dbo', 'promos') }} 
+select status from {{ ref('base_sql_server_dbo__promos') }} 
 ),
 dimension_status as (
 
