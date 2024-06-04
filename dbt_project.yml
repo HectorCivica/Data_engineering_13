@@ -43,3 +43,9 @@ models:
 
     dim_time:
       materialized: table  # O usa "incremental" si prefieres
+
+    marts:
+      +materialized: table
+      +database: "ALUMNO13DEV_GOLD_DB"
+      core:
+        +schema: core

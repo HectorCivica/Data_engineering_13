@@ -10,7 +10,7 @@ with
 
 source as (
 
-    select * from {{ source('sql_server_dbo', 'promos') }}
+    select * from {{ ref('base_sql_server_dbo__promos') }}
 
 ),
 
