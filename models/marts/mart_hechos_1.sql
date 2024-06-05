@@ -20,7 +20,7 @@ cte_promos AS(
 ),
 
 renamed as (
-    select a.order_id, product_id, promo_id, shipping_id, user_id,  id_status, address_id ,quantity, discount_dollar, shipping_cost, order_cost, order_total
+    select a.order_id, product_id, promo_id, shipping_id, user_id,  id_status, address_id ,quantity, discount_dollar, shipping_cost, order_cost, order_total, order_cost+shipping_cost-discount_dollar as comprobacion
     from cte_orders a
     inner join cte_order_items b
     on a.order_id=b.order_id
@@ -29,3 +29,4 @@ renamed as (
 )
 
 select * from renamed
+order by product_id
