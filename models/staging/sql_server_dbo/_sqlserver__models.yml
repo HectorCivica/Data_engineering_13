@@ -1,8 +1,4 @@
-
-
 version: 2
-
-
 
 models:
   - name: stg_sql_server_dbo__addresses
@@ -14,14 +10,12 @@ models:
         tests:
           - unique
           - not_null
-          
 
       - name: zipcode
         data_type: number
         description: "Código postal"
         tests:
-         - not_null
-          
+          - not_null
 
       - name: country
         data_type: varchar
@@ -44,7 +38,6 @@ models:
         description: ""
         tests:
           - not_null
-          
 
   - name: stg_sql_server_dbo__events
     description: ""
@@ -80,7 +73,6 @@ models:
           - relationships:
               to: ref('stg_sql_server_dbo__products')
               field: product_id
-              
 
       - name: session_id
         data_type: varchar
@@ -115,8 +107,6 @@ models:
         description: ""
         tests:
           - not_null
-          
-          
 
       - name: product_id
         data_type: varchar
@@ -150,7 +140,6 @@ models:
               to: ref('stg_sql_server_dbo__orders')
               field: order_id
 
-
       - name: shipping_service
         data_type: varchar
         description: ""
@@ -159,7 +148,7 @@ models:
         data_type: float
         description: ""
         tests:
-         - positive_values
+          - positive_values
 
       - name: address_id
         data_type: varchar
@@ -307,3 +296,20 @@ models:
         description: ""
 
 
+  - name: stg_sql_server_dbo__dimension_status
+    description: "Esta tabla solo debe tener 2 filas, una para cada estatus posible"
+    columns:
+      - name: status
+        data_type: varchar
+        description: ""
+
+
+      - name: id_status
+        data_type: varchar
+        description: ""
+        tests:
+          - relationships:
+              to: ref('stg_sql_server_dbo__promos')
+              field: id_status
+
+      

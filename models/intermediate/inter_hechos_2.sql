@@ -1,5 +1,5 @@
 {{ config(
-    materialized='table',
+    materialized='view',
     on_schema_change='fail'
     ) 
 }}
