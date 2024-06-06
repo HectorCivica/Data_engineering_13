@@ -303,7 +303,6 @@ models:
         data_type: varchar
         description: ""
 
-
       - name: id_status
         data_type: varchar
         description: ""
@@ -312,4 +311,21 @@ models:
               to: ref('stg_sql_server_dbo__promos')
               field: id_status
 
-      
+  - name: stg_sql_server_dbo__dimension_shipping
+    description: "Esta tabla solo debe tener 5 filas, una para cada shipping posible"
+    columns:
+      - name: shipping_id
+        data_type: varchar
+        description: ""
+        tests:
+          - unique
+          - relationships:
+              to: ref('stg_sql_server_dbo__orders')
+              field: shipping_id
+          
+
+      - name: shipping_desc
+        data_type: varchar
+        description: ""
+        
+          
