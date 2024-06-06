@@ -6,9 +6,9 @@
 
 with 
 
-source as (
+base as (
 
-    select * from {{ source('sql_server_dbo', 'orders') }}
+    select * from {{ ref('base_sql_server_dbo__orders') }}
 
 ),
 
@@ -45,7 +45,7 @@ renamed as (
         _fivetran_deleted,
         _fivetran_synced
 
-    from source
+    from base
 
 )
 --select * from renamed

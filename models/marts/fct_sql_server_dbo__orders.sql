@@ -16,8 +16,8 @@ promo_id,
 shipping_id,
 user_id,
 quantity,
-descuento as descuento_por_pedido,
-coste_envio_por_producto,
-coste_pedido_por_producto,
-coste_total_por_producto
+descuento_por_producto_distino,
+coste_envio_por_producto_distinto,
+coste_pedido_por_producto_distinto,
+coste_total_por_producto_distinto
  from cte_hechos

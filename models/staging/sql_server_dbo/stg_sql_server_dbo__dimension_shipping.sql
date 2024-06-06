@@ -6,9 +6,9 @@
 
 with 
 
-source as (
+base as (
 
-select shipping_service from {{ source('sql_server_dbo', 'orders') }} 
+select shipping_service from {{ ref('base_sql_server_dbo__orders') }} 
 ),
 
 dimension_shipping as (
@@ -21,7 +21,7 @@ dimension_shipping as (
             then 'No shipping'
             else shipping_service
             end as shipping_desc
-    from source
+    from base
 
 )
 

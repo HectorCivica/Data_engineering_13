@@ -35,7 +35,7 @@ cte_products_order_items AS(
 cte_orders_order_items_promos as (
     select created_at, a.order_id, b.product_id, promo_id, shipping_id, user_id,  id_status, address_id ,quantity, discount_dollar, shipping_cost, order_cost, order_total, order_cost+shipping_cost-discount_dollar as comprobacion
     from cte_orders a
-    left join cte_order_items b
+    join cte_order_items b
     on a.order_id=b.order_id
     left join cte_promos c -- Hay que hacer un left join porque habia orders que no aparecian. Algunos no tienen promocion y hay que castear un poco
     on a.promo_id=c.id_promocion
@@ -47,7 +47,8 @@ cte_orders_order_items_promos as (
 select created_at, 
 a.order_id, 
 b.product_id,
-name as nombre_producto, 
+name as nombre_producto,
+count(*) over (partition by a.order_id) as numero_de_productos_distintos,
 price,
 promo_id, shipping_id, user_id,
 --id_status, address_id,
@@ -56,13 +57,13 @@ case when discount_dollar is null
 then 0
 else discount_dollar
 end as descuento, 
---descuento/quantity as descuento_por_producto,
+round(descuento/numero_de_productos_distintos,3) as descuento_por_producto_distino,
 shipping_cost,
-shipping_cost/quantity as coste_envio_por_producto,
+round(shipping_cost/numero_de_productos_distintos,3) as coste_envio_por_producto_distinto,
 order_cost,
-order_cost/quantity as coste_pedido_por_producto,
+price*quantity as coste_pedido_por_producto_distinto,
 order_total,
-order_total/quantity as coste_total_por_producto, 
+round(order_total/numero_de_productos_distintos,3) as coste_total_por_producto_distinto, 
 order_cost+shipping_cost-descuento as comprobacion_total,
 --coste_envio_por_producto+coste_pedido_por_producto-descuento_por_producto as comprobacion_por_producto
 from cte_orders_order_items_promos A

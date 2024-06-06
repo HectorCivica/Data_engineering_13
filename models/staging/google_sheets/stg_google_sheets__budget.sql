@@ -20,3 +20,5 @@ renamed as (
 )
 
 select * from renamed
+
+order by 4
