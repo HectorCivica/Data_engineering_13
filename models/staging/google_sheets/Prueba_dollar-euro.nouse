@@ -1,0 +1,10 @@
+-- models/my_model.sql
+with data as (
+    select * from {{ source('google_sheets', 'budget') }}
+),
+
+non_null_check as (
+    select {{ column_not_null('stg_google_sheets__budget', '_row') }} as column_not_null
+)
+
+select * from non_null_check

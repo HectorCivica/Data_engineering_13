@@ -1,8 +1,3 @@
-{{
-  config(
-    materialized = "table",
-  )
-}}
 with 
 
 source as (
@@ -18,17 +13,10 @@ renamed as (
         page_url,
         event_type,
         user_id,
-        --product_id,
-        case when product_id=''
-        then md5('empty_product')
-        else product_id
-        end as product_id,
+        product_id,
         session_id,
         created_at,
-        case when order_id=''
-        then md5('empty_order')
-        else order_id
-        end as order_id,
+        order_id,
         _fivetran_deleted,
         _fivetran_synced
 
