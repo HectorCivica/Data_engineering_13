@@ -40,3 +40,18 @@ models:
     # Applies to all files under models/example/
     example:
       +materialized: table
+<<<<<<< HEAD
+=======
+
+    dim_time:
+      materialized: table  # O usa "incremental" si prefieres
+
+    marts:
+      +materialized: table
+      +database: "ALUMNO13DEV_GOLD_DB"
+      core:
+        +schema: core
+
+vars:
+  udget_date: '2024-10-01'
+>>>>>>> 3237b9da481593ad0638eac3ed0e7f45eb515d38
